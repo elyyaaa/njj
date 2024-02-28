@@ -4,17 +4,18 @@ import List from "./components /list/List";
 import {useState, useEffect} from "react";
 import Input from "./components /input/Input";
 import {Button} from "./components /button/Button";
+import Pagination from "./components /pagination /Pagination";
+import PokemonCard from "./components /pokemonCard/PokemonCard";
 
 function App() {
     const [showModal, setShowModal] = useState(false);
     const [input, setInput] = useState('');
     const [search, setSearch] = useState('');
     const [filter, setFilter] = useState('all');
-    const [tasks, setTasks] = useState([
-        { id: 1, title: 'coding', completed: false },
-        { id: 2, title: 'eat', completed: false },
-        { id: 3, title: 'sleep', completed: false }
-    ]);
+    const [tasks, setTasks] = useState([]);
+    const [page, setPage] = useState(1);
+    const [limit, setLimit] = useState(10);
+    const [pokemonList, setPokemonList] = useState([]);
 
     const handleShowModal = () => {
         setShowModal(!showModal);
@@ -66,10 +67,46 @@ function App() {
         localStorage.removeItem('tasks');
     };
 
+    const handleNext = () => {
+        setPage((prevPage) => prevPage + 1);
+    };
+
+    const handlePrev = () => {
+        setPage((prevPage) => Math.max(prevPage - 1, 1));
+    };
+
     useEffect(() => {
-        // Save tasks to localStorage
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-    }, [tasks]);
+        const fetchData = async () => {
+            try {
+                const response = await fetch(
+                    `https://jsonplaceholder.typicode.com/todos?_limit=${limit}&_page=${page}`
+                );
+                const result = await response.json();
+                setTasks(result);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, [page, limit]);
+
+    useEffect(() => {
+        const fetchPokemonList = async () => {
+            try {
+                const response = await fetch(
+                    'https://pokeapi.co/api/v2/pokemon'
+                );
+                const data = await response.json();
+                setPokemonList(data.results);
+            } catch (error) {
+                console.error('Error fetching Pokemon list:', error);
+            }
+            setLimit(20)
+        };
+
+        fetchPokemonList();
+    }, []);
 
     const filteredTasks = tasks.filter((task) => {
         if (filter === 'all') {
@@ -112,6 +149,15 @@ function App() {
                 handleDone={handleDoneTask}
                 handleEdit={handleEditTask}
             />
+            <Pagination
+                handleNext={handleNext}
+                handlePrev={handlePrev}
+                page={page}
+            />
+            {pokemonList.map((pokemon) => (
+                <PokemonCard key={pokemon.name} pokemon={pokemon} />
+            ))}
+
         </>
     );
 }
