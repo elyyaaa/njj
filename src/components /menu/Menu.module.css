@@ -1,0 +1,13 @@
+.ull {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    background-color: #03030351;
+    padding: 20px;
+
+}
+
+.active {
+    color: #deb8b8;
+}
