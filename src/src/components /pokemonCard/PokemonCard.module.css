@@ -1,0 +1,13 @@
+body{
+    background: hsl(0, 0%, 90%) url(https://html5book.ru/wp-content/uploads/2016/09/background74.jpg);
+}
+
+.link{
+    color: rgb(3, 3, 3);
+    background-color: rgb(248, 233, 54);
+    border-radius: 60px;
+    padding: 5px;
+}
+.pokemons{
+    margin-left: 40px;
+}

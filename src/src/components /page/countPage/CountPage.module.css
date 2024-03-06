@@ -1,0 +1,13 @@
+.wrapper {
+    text-align: center;
+}
+.wrapper button{
+    color: #f8e936;
+    font-size: 30px;
+    background-color: #deb8b8;
+}
+.wrapper p{
+    color: #deb8b8;
+    font-weight: bold;
+    font-size: 30px;
+}

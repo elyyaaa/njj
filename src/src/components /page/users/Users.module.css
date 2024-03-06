@@ -1,0 +1,22 @@
+.users{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 40px;
+
+}
+.users li{
+    border: 3px solid rgba(59, 59, 59, 0.74);
+    border-radius: 6px;
+    background-color: #deb8b8;
+    width: 200px;
+    height: 150px;
+    text-align: center;
+}
+.users p{
+    font-style: oblique;
+    font-weight: bold;
+    color: #f8e936;
+
+}
