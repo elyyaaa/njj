@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import PokemonCard from "../../pokemonCard/PokemonCard";
-import Pagination from "../../pagination /Pagination";
+import Pagination from "../../pagination/Pagination";
 import classes from "../pokemonPage/PokemoPage.module.css";
 
 

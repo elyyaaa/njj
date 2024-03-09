@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import PokemonCard from "../pokemonCard/PokemonCard";
-import Pagination from "../pagination /Pagination";
+import Pagination from "../pagination/Pagination";
 
 const MainPage = () => {
     const [pokemonData, setPokemonData] = useState([]);

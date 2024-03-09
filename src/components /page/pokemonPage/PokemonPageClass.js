@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import PokemonCard from "../../pokemonCard/PokemonCard";
-import Pagination from "../../pagination /Pagination";
+import Pagination from "../../pagination/Pagination";
 import classes from "./PokemoPage.module.css";
 class PokemonPageClass extends Component {
     constructor() {

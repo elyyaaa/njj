@@ -17,7 +17,7 @@ const PokemonCard = ({pokemon}) => {
 
     useEffect(() => {
         getPokemon().then(pokemon=>setPokemonOne(pokemon))
-    }, []);
+    }, [[]]);
 
     return (
         <div className={classes.pokemons}>
